@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <script>//<![CDATA[
+      var s = false;
+      function l() {
+        setTimeout(f, 10000);
+        if (document.referrer) {
+          try {
+            var pm = /(^|&|\?)px=([^&]*)(&|$)/i;
+            var px = window.location.href.match(pm);
+            var rs = document.referrer;
+            if (px != null) {
+              if (rs.match(pm))
+                rs = rs.replace(pm, "$1px=" + px[2] + "$3");
+              else if (rs.indexOf("?") != -1)
+                rs = rs + "&px=" + px[2];
+              else
+                rs = rs + "?px=" + px[2];
+            }
+            history.replaceState({}, "Bing", rs);
+            window.addEventListener("pageshow", function(e) { if (e.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) window.location.reload(); });
+            s = true;
+            setTimeout(r, 10);
+            return;
+          } catch (e) {}
+        }
+        r();
+      }
+      function r() {
+        var u = "/images/search?q=exercice%20%20trisabse%20%20gif&FORM=IQFRBA&id=85A4E363DE75C733C8709F8C664DCD4E2A561035";
+        if (s)
+          window.location.href = u;
+        else
+          window.location.replace(u);
+      }
+      function f() {
+        document.getElementById("fb").style.display = "block";
+      }
+      //]]>
+    </script>
+  </head>
+  <body onload="l()">
+    <div id="fb" style="display: none">
+      Please <a href="https://www.bing.com/ck/a?!&&p=f9a13fbdb064f33fJmltdHM9MTcxMTA2NTYwMCZpZ3VpZD0yNjQwMTQwZC03MzgwLTYxZjEtMTdiMS0wNjVhNzIzNDYwZmMmaW5zaWQ9NTU2NA&ptn=3&ver=2&hsh=3&fclid=2640140d-7380-61f1-17b1-065a723460fc&u=a1L2ltYWdlcy9zZWFyY2g_cT1leGVyY2ljZSUyMCUyMHRyaXNhYnNlJTIwJTIwZ2lmJkZPUk09SVFGUkJBJmlkPTg1QTRFMzYzREU3NUM3MzNDODcwOUY4QzY2NERDRDRFMkE1NjEwMzU&ntb=F">click here</a> if the page does not redirect automatically ...
+    </div>
+  </body>
+</html>
